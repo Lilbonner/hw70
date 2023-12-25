@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { store } from './App/Store.ts';
 import {AddContact} from "./Components/CreateContact.tsx";
 import './App.css'
+import {ContactList} from "./Components/ContactList.tsx";
 
 const App = () => {
     return (
@@ -18,6 +19,8 @@ const App = () => {
                 </header>
                 <Routes>
                     <Route path="/add" element={<AddContact />} />
+                    <Route path="/" element={<ContactList />} />
+
                 </Routes>
             </Router>
         </Provider>
