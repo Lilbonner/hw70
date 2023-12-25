@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from './ContactSlice.tsx';
 import axiosApi from '../axiosApi.ts';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export const AddContact = () => {
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export const AddContact = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
             <label>
                 Name:
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -51,11 +51,17 @@ export const AddContact = () => {
                 Email:
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
-            <label>
+            <label className='photo'>
                 Photo:
-                <input type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
+                <input className='photo-input' type="text" value={photo} onChange={(e) => setPhoto(e.target.value)} />
             </label>
-            <button type="submit">Add Contact</button>
+            <div className='buttons'>
+                <button type="submit">Save</button>
+                <button className='back-to'>
+                    Back to contacts
+                    <Link to={'/'} />
+                </button>
+            </div>
         </form>
     );
 };
